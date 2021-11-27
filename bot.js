@@ -34,6 +34,9 @@ bot.hears('hola', (ctx) => {
   ctx.reply('Bienvenido/a!');
 })
 
+bot.hears(['imbécil', 'cabrón', 'Me cago en tus muertos', 'mamón', 'maricón', 'mamoncete', 'estúpido', 'tonto', 'karajote', 'Maricón', 'Imbécil', 'Imbecil', 'Hijo de puta', 'mongolo', 'MONGOLO', 'MAMON'], (ctx) => {
+  ctx.reply('Cuidado con el lenguaje hijo de puta');
+})
 
 bot.mention('salrodgom', (ctx) => {
   ctx.reply('Menudo hijo de puta');
@@ -50,6 +53,15 @@ bot.mention('amiguet', (ctx) => {
 bot.on('sticker', (ctx) => {
   ctx.reply('ese sticker guapo!');
 })
+
+bot.on('emoji', (ctx) => {
+  ctx.reply('Los emojis son para subnormales');
+})
+
+bot.on('gifs', (ctx) => {
+  ctx.reply('Los gifs los mandan los analfabetos y mongolos');
+})
+
 
 bot.launch();
 
