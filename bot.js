@@ -12,8 +12,45 @@ bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
 expressApp.use(bot.webhookCallback(`/bot${API_TOKEN}`));
 
 bot.start((ctx) => {
-  ctx.reply('Welcome');
+  console.log(ctx);
+  ctx.reply('Welcome ' + ctx.from.first_name + ' ' + ctx.from.last_name  );
+  ctx.reply( `Bienvenido ${ ctx.from.first_name }. ${ctx.from.last_name}`  );
+
 })
+
+bot.help((ctx) => {
+  ctx.reply('Help');
+})
+
+bot.settings((ctx) => {
+  ctx.reply('Settings');
+})
+
+bot.command(['mycommand', 'test', 'mycommand'], (ctx) => {
+  ctx.reply('Settings');
+})
+
+bot.hears('hola', (ctx) => {
+  ctx.reply('Bienvenido/a!');
+})
+
+
+bot.mention('salrodgom', (ctx) => {
+  ctx.reply('Menudo hijo de puta');
+})
+
+bot.mention('amiguet', (ctx) => {
+  ctx.reply('Es mi amo, un poco mariconcete');
+})
+
+// bot.on('text', (ctx) => {
+//   ctx.reply('Escribes');
+// })
+
+bot.on('sticker', (ctx) => {
+  ctx.reply('ese sticker guapo!');
+})
+
 bot.launch();
 
 expressApp.get('/', (req, res) => {
