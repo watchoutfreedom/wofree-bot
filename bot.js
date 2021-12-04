@@ -2,9 +2,9 @@
 const { Telegraf } = require('telegraf');
 const express = require('express');
 const expressApp = express();
-const env = require('dotenv').config({path: __dirname + '/.env'})
+require('dotenv').config();
 
-const API_TOKEN = process.env.API_TOKEN || '';
+const API_TOKEN = process.env.API_TOKEN || '2118962917:AAF2yuqZkPqqOpj31rxj0-6gPKaBKqGrxVg';
 
 const PORT = process.env.PORT || 3000;
 const URL = process.env.URL || 'https://wofree-bot.herokuapp.com';
@@ -99,69 +99,69 @@ bot.command(['/consulta', '/Consulta', '/CONSULTA'], (ctx) => {
   );
 
 })
-
-bot.command(['/encargo'], (ctx) => {
-
-  ctx.reply(
-
-    ` Qué emoción! Y de qué es tu encargo? Escríbenos un mensaje con estos campos y te resonderemos lo antes posible:
-
-      -Nombre
-      -Descripción del encargo
-      -Dirección y correo
-      -Telefono y/o usuario Telegram
-      -Es una consultoría creativa para un /diseño, /servicio o /producto, o un consultoría estratégica para /formación, /conferencias, /investigación o /similar?
-      -Coste medio de tu aportación (por horas u otro tipo de medida. Si quieres ver el tipo de aportación más común en función de la consultoría haz click aquí)
-
-    `
-  );
-
-
-})
-
-
-bot.command(['/sent'], (ctx) => {
-
-  console.log(ctx.message);
-  bot.telegram.sendMessage('-681528618', ctx.message.text);
-
-})
-
-bot.on('text', (ctx) => {
-  bot.telegram.sendMessage(message.chat.id, 'akdjd');
-})
-
-if (isProf)
-{
-
-  bot.on('text', (ctx) => {
-    bot.telegram.sendMessage('-681528618', ctx.message.text);
-  })
-
-  isProf = false;
-}
-
-bot.command(['/profesional'], (ctx) => {
-
-
-
-  ctx.reply(
-
-    ` Bienvenido/a al barco! Sólo haznos escribe un mensaje rellenando estos datos y te responderemos en cuanto podamos, gracias ! :
-
-      -Nombre:
-      -Breve descripción profesional de ti / CV :
-      -Dirección y correo :
-      -Telefono y/o usuario Telegram :
-      -Campos de acción y/o conocimiento (Elige uno o varios : TECNOLOGÍA, DISEÑO, ACCIÓN POLÍTICA/SOCIAL, ARTE, CIENCIAS NATURALES Y EXACTAS, FIILOSOFIA, RELIGION, DERECHO, CIENCIAS SOCIALES ) :
-      -Coste medio de tu aportación (por horas u otro tipo de medida. Si quieres ver el tipo de aportación más común en función de la consultoría haz click aquí) :
-
-    `
-  );
-
-  isProf = true;
-
-})
+// 
+// bot.command(['/encargo'], (ctx) => {
+//
+//   ctx.reply(
+//
+//     ` Qué emoción! Y de qué es tu encargo? Escríbenos un mensaje con estos campos y te resonderemos lo antes posible:
+//
+//       -Nombre
+//       -Descripción del encargo
+//       -Dirección y correo
+//       -Telefono y/o usuario Telegram
+//       -Es una consultoría creativa para un /diseño, /servicio o /producto, o un consultoría estratégica para /formación, /conferencias, /investigación o /similar?
+//       -Coste medio de tu aportación (por horas u otro tipo de medida. Si quieres ver el tipo de aportación más común en función de la consultoría haz click aquí)
+//
+//     `
+//   );
+//
+//
+// })
+//
+//
+// bot.command(['/sent'], (ctx) => {
+//
+//   console.log(ctx.message);
+//   bot.telegram.sendMessage('-681528618', ctx.message.text);
+//
+// })
+//
+// bot.on('text', (ctx) => {
+//   bot.telegram.sendMessage(message.chat.id, 'akdjd');
+// })
+//
+// if (isProf)
+// {
+//
+//   bot.on('text', (ctx) => {
+//     bot.telegram.sendMessage('-681528618', ctx.message.text);
+//   })
+//
+//   isProf = false;
+// }
+//
+// bot.command(['/profesional'], (ctx) => {
+//
+//
+//
+//   ctx.reply(
+//
+//     ` Bienvenido/a al barco! Sólo haznos escribe un mensaje rellenando estos datos y te responderemos en cuanto podamos, gracias ! :
+//
+//       -Nombre:
+//       -Breve descripción profesional de ti / CV :
+//       -Dirección y correo :
+//       -Telefono y/o usuario Telegram :
+//       -Campos de acción y/o conocimiento (Elige uno o varios : TECNOLOGÍA, DISEÑO, ACCIÓN POLÍTICA/SOCIAL, ARTE, CIENCIAS NATURALES Y EXACTAS, FIILOSOFIA, RELIGION, DERECHO, CIENCIAS SOCIALES ) :
+//       -Coste medio de tu aportación (por horas u otro tipo de medida. Si quieres ver el tipo de aportación más común en función de la consultoría haz click aquí) :
+//
+//     `
+//   );
+//
+//   isProf = true;
+//
+// })
 
 bot.hears(['imbécil', 'cabrón', 'Me cago en tus muertos', 'mamón', 'maricón', 'mamoncete', 'estúpido', 'tonto', 'karajote', 'Maricón', 'Imbécil', 'Imbecil', 'Hijo de puta', 'mongolo', 'MONGOLO', 'MAMON'], (ctx) => {
   ctx.reply('Cuidado con el lenguaje hijo de puta');
@@ -191,13 +191,6 @@ bot.mention('Wofree_bot', (ctx) => {
 //   ctx.reply('Escribes');
 // })
 
-bot.on('sticker', (ctx) => {
-  ctx.reply('ese sticker guapo!');
-})
-
-bot.on('emoji', (ctx) => {
-  ctx.reply('Los emojis son para subnormales');
-})
 
 bot.on('gifs', (ctx) => {
   ctx.reply('Los gifs los mandan los analfabetos y mongolos');
