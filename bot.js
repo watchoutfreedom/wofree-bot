@@ -6,8 +6,8 @@ const env = require('dotenv').config({path: __dirname + '/.env'})
 
 const API_TOKEN = process.env.API_TOKEN || '';
 
-const PORT = env.PORT || 3000;
-const URL = env.URL || 'https://wofree-bot.herokuapp.com';
+const PORT = process.env.PORT || 3000;
+const URL = process.env.URL || 'https://wofree-bot.herokuapp.com';
 
 const bot = new Telegraf(API_TOKEN);
 bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
