@@ -1,8 +1,8 @@
 {
   "name": "wofree_bot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Telgram bot Heroku",
+  "main": "bot.js",
   "scripts": {
     "dev": "nodemon bot.js",
     "start": "node bot.js"
