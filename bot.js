@@ -9,6 +9,14 @@ const API_TOKEN = process.env.API_TOKEN || '';
 const PORT = process.env.PORT || 3000;
 const URL = process.env.URL || 'https://wofree-bot.herokuapp.com';
 
+expressApp.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+expressApp.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 const bot = new Telegraf(API_TOKEN);
 bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
 expressApp.use(bot.webhookCallback(`/bot${API_TOKEN}`));
@@ -197,11 +205,3 @@ bot.on('gifs', (ctx) => {
 
 
 bot.launch();
-
-expressApp.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-expressApp.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
