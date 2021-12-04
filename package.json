@@ -2,6 +2,10 @@
   "name": "wofree_bot",
   "version": "1.0.0",
   "description": "Telgram bot Heroku",
+  "engines": {
+    "node": "17.0",
+    "npm": "8.1"
+  },
   "main": "bot.js",
   "scripts": {
     "dev": "nodemon bot.js",
