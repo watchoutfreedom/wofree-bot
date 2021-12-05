@@ -25,18 +25,20 @@ expressApp.use(bot.webhookCallback(`/bot${API_TOKEN}`));
 const isQuestion = false;
 const isConsult = false;
 const isProf = false;
+const isEnglish = false;
 
 
 bot.start((ctx) => {
 
   console.log(ctx);
-  ctx.reply('Welcome ' + ctx.from.first_name + ' ' + ctx.from.last_name  );
-  ctx.reply( `Bienvenido ${ ctx.from.first_name }. ${ctx.from.last_name}`  );
+  ctx.reply('Welcome ' + ctx.from.first_name  );
+  ctx.reply( `Bienvenido ${ ctx.from.first_name }.`  );
 
 })
 
 bot.help((ctx) => {
-  ctx.reply('Help');
+  ctx.reply('If ');
+
 })
 
 bot.settings((ctx) => {
@@ -127,8 +129,27 @@ bot.command(['/sent'], (ctx) => {
 
 })
 
-bot.on('text', (ctx) => {
-  bot.telegram.sendMessage(ctx.message.chat.id, 'akdjd');
+// bot.on('text', (ctx) => {
+//   bot.telegram.sendMessage(ctx.message.chat.id, 'akdjd');
+// })
+
+bot.hears('hello', (ctx) => {
+  ctx.reply('<b>Hello</b>. <i>How are you today?</i>',
+    Extra.HTML()
+    .markup(Markup.inlineKeyboard([
+      Markup.callbackButton('Not bad', 'not bad'),
+      Markup.callbackButton('All right', 'all right')
+    ])))
+})
+
+bot.action('not bad', (ctx) => {
+  ctx.editMessageText('<i>Have a nice day 😊</i>',
+    Extra.HTML())
+})
+
+bot.action('all right', (ctx) => {
+  ctx.editMessageText('<i>May happiness be with you 🙏</i>',
+    Extra.HTML())
 })
 
 if (isProf)
@@ -142,8 +163,6 @@ if (isProf)
 }
 
 bot.command(['/profesional'], (ctx) => {
-
-
 
   ctx.reply(
 
@@ -172,7 +191,7 @@ bot.mention('salrodgom', (ctx) => {
 })
 
 bot.mention('amiguet', (ctx) => {
-  ctx.reply('Es mi amo, un poco mariconcete');
+  ctx.reply('Ahora viene');
 })
 
 bot.mention('Wofree_bot', (ctx) => {
