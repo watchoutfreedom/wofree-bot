@@ -1,5 +1,8 @@
 /** @type {typeof import('telegraf').Telegraf} */
 const { Telegraf } = require('telegraf');
+const Markup = require('telegraf/markup');
+const Extra = require('telegraf/extra');
+const WizardScene = require('telegraf/scenes/wizard');
 const express = require('express');
 const expressApp = express();
 require('dotenv').config();
