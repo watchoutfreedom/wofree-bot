@@ -132,14 +132,23 @@ bot.command(['/sent'], (ctx) => {
 // bot.on('text', (ctx) => {
 //   bot.telegram.sendMessage(ctx.message.chat.id, 'akdjd');
 // })
+const extraObject = {
+    parse_mode: 'HTML',
+    ...Markup.inlineKeyboard([
+        Markup.button.callback('Coke', 'Coke'),
+        Markup.button.callback('Pepsi', 'Pepsi'),
+    ]),
+}
 
 bot.hears('hello', (ctx) => {
-  ctx.replyWithMarkdownV2('<b>Hello</b>. <i>How are you today?</i>',
-    Markup.inlineKeyboard([
-      Markup.button.callback('Not bad', 'not bad'),
-      Markup.button.callback('All right', 'all right')
-    ]))
+
+
+    ctx.telegram.sendMessage(ctx.chat.id, '<b>Hello</b>. <i>How are you today?</i>', extraObject)
+
 })
+
+
+
 
 bot.action('not bad', (ctx) => {
   ctx.telegram.editMessageText('<i>Have a nice day 😊</i>')
