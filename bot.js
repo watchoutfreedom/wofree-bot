@@ -134,22 +134,19 @@ bot.command(['/sent'], (ctx) => {
 // })
 
 bot.hears('hello', (ctx) => {
-  ctx.reply('<b>Hello</b>. <i>How are you today?</i>',
-    Extra.HTML()
-    .markup(Markup.inlineKeyboard([
+  ctx.replyWithHTML('<b>Hello</b>. <i>How are you today?</i>',
+    Markup.inlineKeyboard([
       Markup.callbackButton('Not bad', 'not bad'),
       Markup.callbackButton('All right', 'all right')
-    ])))
+    ]))
 })
 
 bot.action('not bad', (ctx) => {
-  ctx.editMessageText('<i>Have a nice day 😊</i>',
-    Extra.HTML())
+  ctx.editMessageText('<i>Have a nice day 😊</i>')
 })
 
 bot.action('all right', (ctx) => {
-  ctx.editMessageText('<i>May happiness be with you 🙏</i>',
-    Extra.HTML())
+  ctx.editMessageText('<i>May happiness be with you 🙏</i>')
 })
 
 if (isProf)
