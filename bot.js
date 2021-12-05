@@ -136,17 +136,17 @@ bot.command(['/sent'], (ctx) => {
 bot.hears('hello', (ctx) => {
   ctx.replyWithMarkdownV2('<b>Hello</b>. <i>How are you today?</i>',
     Markup.inlineKeyboard([
-      Markup.callbackButton('Not bad', 'not bad'),
-      Markup.callbackButton('All right', 'all right')
+      Markup.button.callback('Not bad', 'not bad'),
+      Markup.button.callback('All right', 'all right')
     ]))
 })
 
 bot.action('not bad', (ctx) => {
-  ctx.editMessageText('<i>Have a nice day 😊</i>')
+  ctx.telegram.editMessageText('<i>Have a nice day 😊</i>')
 })
 
 bot.action('all right', (ctx) => {
-  ctx.editMessageText('<i>May happiness be with you 🙏</i>')
+  ctx.telegram.editMessageText('<i>May happiness be with you 🙏</i>')
 })
 
 if (isProf)
