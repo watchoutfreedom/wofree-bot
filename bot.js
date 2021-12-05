@@ -134,7 +134,7 @@ bot.command(['/sent'], (ctx) => {
 // })
 
 bot.hears('hello', (ctx) => {
-  ctx.replyWithHTML('<b>Hello</b>. <i>How are you today?</i>',
+  ctx.replyWithMarkdownV2('<b>Hello</b>. <i>How are you today?</i>',
     Markup.inlineKeyboard([
       Markup.callbackButton('Not bad', 'not bad'),
       Markup.callbackButton('All right', 'all right')
