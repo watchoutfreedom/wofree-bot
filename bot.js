@@ -148,14 +148,12 @@ bot.hears('hello', (ctx) => {
 })
 
 
-
-
-bot.action('not bad', (ctx) => {
-  ctx.telegram.editMessageText('<i>Have a nice day 😊</i>')
+bot.action('Coke', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Have a nice day 😊</i>', {parse_mode: 'HTML'})
 })
 
-bot.action('all right', (ctx) => {
-  ctx.telegram.editMessageText('<i>May happiness be with you 🙏</i>')
+bot.action('Pepsi', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>May happiness be with you 🙏</i>', {parse_mode: 'HTML'})
 })
 
 if (isProf)
