@@ -36,6 +36,18 @@ bot.start((ctx) => {
 
 })
 
+
+if(isProf)
+{
+
+  bot.on('text', (ctx) => {
+    bot.telegram.sendMessage('-681528618', ctx.message.text);
+  })
+
+  isProf = false;
+
+}
+
 bot.help((ctx) => {
   ctx.reply('If ');
 
@@ -197,8 +209,10 @@ bot.action('Consulta', (ctx) => {
 })
 
 bot.action('Profesional', (ctx) => {
+  isProf = true;
   ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias :</i>', {parse_mode: 'HTML'})
 })
+
 
 
 ///RESPUESTA A IDIOMA
