@@ -140,22 +140,49 @@ const extraObject = {
     ]),
 }
 
+const languageObject = {
+    parse_mode: 'HTML',
+    ...Markup.inlineKeyboard([
+        Markup.button.callback('Increíble', 'Increíble'),
+        Markup.button.callback('Awesome', 'Awesome'),
+    ]),
+}
+
 bot.hears('hello', (ctx) => {
 
-
-    ctx.telegram.sendMessage(ctx.chat.id, '<b>Hello</b>. <i>How are you today?</i>', extraObject)
+    ctx.telegram.sendMessage(ctx.chat.id, '<b>Hello</b>. <i>What do you understand better?😍</i>', languageObject)
 
 })
 
+bot.hears('hola', (ctx) => {
 
-bot.action('Coke', (ctx) => {
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Have a nice day 😊</i>', {parse_mode: 'HTML'})
+
+    ctx.telegram.sendMessage(ctx.chat.id, '<b>Hola</b>. <i>Qué entiendes mejor?😍</i>', languageObject)
+
 })
 
-bot.action('Pepsi', (ctx) => {
+///RESPUESTA A IDIOMA
+///OPTIONS object
+const optionsObject = {
+    parse_mode: 'HTML',
+    ...Markup.inlineKeyboard([
+        Markup.button.callback('Profesional', 'Profesional'),
+        Markup.button.callback('Servicios', 'Servicios'),
+        Markup.button.callback('Consulta', 'Consulta'),
+    ]),
+}
+
+
+bot.action('Profesional', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, qué quieres </i>', {parse_mode: 'HTML'})
+})
+
+bot.action('Awesome', (ctx) => {
   ctx.telegram.sendMessage(ctx.chat.id,'<i>May happiness be with you 🙏</i>', {parse_mode: 'HTML'})
 })
 
+///RESPUESTA A IDIOMA
+///OPTIONS object
 if (isProf)
 {
 
