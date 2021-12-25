@@ -143,8 +143,8 @@ const extraObject = {
 const languageObject = {
     parse_mode: 'HTML',
     ...Markup.inlineKeyboard([
-        Markup.button.callback('Increíble', 'Increíble'),
-        Markup.button.callback('Awesome', 'Awesome'),
+        Markup.button.callback('Espanol', 'Español'),
+        Markup.button.callback('English', 'English'),
     ]),
 }
 
@@ -161,25 +161,45 @@ bot.hears('hola', (ctx) => {
 
 })
 
-///RESPUESTA A IDIOMA
+
+///RESPUESTA A IDIOMA ESPAÑOL
 ///OPTIONS object
 const optionsObject = {
     parse_mode: 'HTML',
     ...Markup.inlineKeyboard([
-        Markup.button.callback('Profesional', 'Profesional'),
-        Markup.button.callback('Servicios', 'Servicios'),
+        Markup.button.callback('Profesional', 'Unirme como profesional'),
+        Markup.button.callback('Servicios', 'Solicitar servicios'),
         Markup.button.callback('Consulta', 'Consulta'),
     ]),
 }
 
+const servicesObject = {
+    parse_mode: 'HTML',
+    ...Markup.inlineKeyboard([
+        Markup.button.callback('Encargar_charla', 'Encargar una Charla'),
+        Markup.button.callback('Solicitar_curso', 'Solicitar un curso'),
+        Markup.button.callback('Solicitar_brainstorm', 'Solicitar una consultoría creativa'),
+        Markup.button.callback('Solicitar_producto', 'Solicitar un libro, obra u otro producto'),
+    ]),
+}
+
+
+bot.action('Espanol', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, qué quieres </i>', optionsObject)
+})
+
+bot.action('Servicios', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>OK! Gracias, selecciona qué servicio te interesa :</i>', servicesObject)
+})
+
+bot.action('Consulta', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i> Gracias por interesarte, qué te gustaría consultarnos? escríbela aquí y te responderemos lo antes posible</i>', {parse_mode: 'HTML'})
+})
 
 bot.action('Profesional', (ctx) => {
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, qué quieres </i>', {parse_mode: 'HTML'})
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias :</i>', {parse_mode: 'HTML'})
 })
 
-bot.action('Awesome', (ctx) => {
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>May happiness be with you 🙏</i>', {parse_mode: 'HTML'})
-})
 
 ///RESPUESTA A IDIOMA
 ///OPTIONS object
