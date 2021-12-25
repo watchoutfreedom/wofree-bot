@@ -143,7 +143,7 @@ const extraObject = {
 const languageObject = {
     parse_mode: 'HTML',
     ...Markup.inlineKeyboard([
-        Markup.button.callback('Espanol', 'Español'),
+        Markup.button.callback('Español', 'Espanol'),
         Markup.button.callback('English', 'English'),
     ]),
 }
@@ -167,19 +167,19 @@ bot.hears('hola', (ctx) => {
 const optionsObject = {
     parse_mode: 'HTML',
     ...Markup.inlineKeyboard([
-        Markup.button.callback('Profesional', 'Unirme como profesional'),
-        Markup.button.callback('Servicios', 'Solicitar servicios'),
-        Markup.button.callback('Consulta', 'Consulta'),
+        Markup.button.callback( 'Unirme como profesional', 'Profesional'),
+        Markup.button.callback( 'Solicitar servicios', 'Servicios'),
+        Markup.button.callback( 'Consulta', 'Consulta'),
     ]),
 }
 
 const servicesObject = {
     parse_mode: 'HTML',
     ...Markup.inlineKeyboard([
-        Markup.button.callback('Encargar_charla', 'Encargar una Charla'),
-        Markup.button.callback('Solicitar_curso', 'Solicitar un curso'),
-        Markup.button.callback('Solicitar_brainstorm', 'Solicitar una consultoría creativa'),
-        Markup.button.callback('Solicitar_producto', 'Solicitar un libro, obra u otro producto'),
+        Markup.button.callback('Encargar una Charla', 'Encargar_charla'),
+        Markup.button.callback('Solicitar un curso', 'Solicitar_curso'),
+        Markup.button.callback('Solicitar una consultoría creativa', 'Solicitar_brainstorm'),
+        Markup.button.callback('Solicitar un libro, obra u otro producto', 'Solicitar_producto'),
     ]),
 }
 
