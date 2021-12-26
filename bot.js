@@ -38,19 +38,6 @@ bot.start((ctx) => {
 })
 
 
-
-if(isProf)
-{
-
-  bot.on('text', (ctx) => {
-    bot.telegram.sendMessage('-681528618', ctx.message.text);
-  })
-
-  isProf = false;
-
-}
-
-
 //SAY HELLO
 //
 //
@@ -130,7 +117,7 @@ const servicesObject = {
 
 
 bot.action('Espanol', (ctx) => {
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, qué quieres </i>', optionsObject)
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, qué deseas: </i>', optionsObject)
 })
 
 bot.action('Servicios', (ctx) => {
@@ -144,9 +131,28 @@ bot.action('Consulta', (ctx) => {
 })
 
 bot.action('Profesional', (ctx) => {
-  isProf=true;
   ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias :</i>', {parse_mode: 'HTML'});
   bot.telegram.sendMessage('-681528618', 'Proffesional asked to join');
+})
+
+bot.action('Charla', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Genial, de quién te guustaría solicitar la charla y nos pondremos en contacto contigo :</i>', {parse_mode: 'HTML'});
+  bot.telegram.sendMessage('-681528618', 'Charla de:');
+})
+
+bot.action('Curso', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias :</i>', {parse_mode: 'HTML'});
+  bot.telegram.sendMessage('-681528618', 'Curso de:');
+})
+
+bot.action('Solicitar_brainstorm', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias :</i>', {parse_mode: 'HTML'});
+  bot.telegram.sendMessage('-681528618', 'Brainstorm:');
+})
+
+bot.action('Solicitar_producto', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias 😚:</i>', {parse_mode: 'HTML'});
+  bot.telegram.sendMessage('-681528618', 'Producto:');
 })
 
 
@@ -154,28 +160,12 @@ bot.action('Profesional', (ctx) => {
 ///OPTIONS object
 
 composer.on('message',ctx => {
-  if (isProf)
-  {
-
-    bot.on('text', (ctx) => {
-      bot.telegram.sendMessage('-681528618', ctx.message.text);
-    })
-
-    isProf = false;
-  }
-
   bot.telegram.sendMessage('-681528618', ctx.message.text).then()
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Gracias por tu mensaje, di hola si necesitas algo más</i>', {parse_mode: 'HTML'});
 })
 
 bot.use(composer.middleware());
 
-//send message to other chat
-bot.command(['/sent'], (ctx) => {
-
-  console.log(ctx.message);
-  bot.telegram.sendMessage('-681528618', ctx.message.text);
-
-})
 
 bot.hears(['imbécil', 'cabrón', 'Me cago en tus muertos', 'mamón', 'maricón', 'mamoncete', 'estúpido', 'tonto', 'karajote', 'Maricón', 'Imbécil', 'Imbecil', 'Hijo de puta', 'mongolo', 'MONGOLO', 'MAMON'], (ctx) => {
   ctx.reply('Cuidado con el lenguaje');
