@@ -139,7 +139,7 @@ bot.action('Solicitar_curso', (ctx) => {
 })
 
 bot.action('Solicitar_brainstorm', (ctx) => {
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Genial, escírbenos los datos de tu encargo y nos pondremos en contacto contigo:</i>', {parse_mode: 'HTML'});
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Genial, escribe los datos de tu encargo y nos pondremos en contacto contigo:</i>', {parse_mode: 'HTML'});
   bot.telegram.sendMessage('-681528618', 'Brainstorm:');
 })
 
