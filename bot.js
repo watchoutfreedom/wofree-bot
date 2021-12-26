@@ -4,7 +4,7 @@ const express = require('express');
 const expressApp = express();
 require('dotenv').config();
 
-const API_TOKEN = process.env.API_TOKEN || '2118962917:AAF2yuqZkPqqOpj31rxj0-6gPKaBKqGrxVg';
+const API_TOKEN = process.env.API_TOKEN || '';
 
 const PORT = process.env.PORT || 3000;
 const URL = process.env.URL || 'https://wofree-bot.herokuapp.com';
