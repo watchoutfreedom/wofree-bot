@@ -1,5 +1,5 @@
 /** @type {typeof import('telegraf').Telegraf} */
-const { Telegraf, Markup, Extra, WizardScene  } = require('telegraf');
+const { Telegraf, Markup, Extra, WizardScene, Composer } = require('telegraf');
 const express = require('express');
 const expressApp = express();
 require('dotenv').config();
@@ -22,6 +22,7 @@ bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
 expressApp.use(bot.webhookCallback(`/bot${API_TOKEN}`));
 
 //variables de estado del bot
+const composer = new Composer();
 const isQuestion = false;
 const isConsult = false;
 const isProf = false;
@@ -37,6 +38,7 @@ bot.start((ctx) => {
 })
 
 
+
 if(isProf)
 {
 
@@ -48,102 +50,11 @@ if(isProf)
 
 }
 
-bot.help((ctx) => {
-  ctx.reply('If ');
-
-})
-
-bot.settings((ctx) => {
-  ctx.reply('Settings');
-})
-
 
 //SAY HELLO
-bot.hears('hola', (ctx) => {
-
-  ctx.reply(
-
-    ` Ooops! Encantada de saludarte!
-
-      Si eres una persona curiosa y/o profesional interesada en aportar y trabajar junto a un equipo con grandes ideales, pulsa o escribe /profesional.
-
-      Si representas a una empresa o entidad con ganas de mejorar en conocimiento, innovación y tecnología y quieres acceder a nuestros servicios de consultoría pulsa o escribe /consulta
-
-      Si tienes una duda general sólo pulsa o escribe /duda.
-     `
-
-  );
-
-})
-
-//WELCOME WITH COMMAND
-bot.command('hola', (ctx) => {
-
-  ctx.reply(
-
-    `
-      Ooops! Encantado de saludarte!
-
-      Si eres una persona curiosa y/o profesional interesada en aportar y trabajar junto a un equipo con grandes ideales, pulsa o escribe /profesional.
-
-      Si representas a una empresa o entidad con ganas de mejorar en conocimiento, innovación y tecnología y quieres acceder a nuestros servicios de consultoría pulsa o escribe /consulta
-     `
-
-  );
-
-})
-
-
-bot.command(['/duda'], (ctx) => {
-
-  ctx.reply(
-
-    `Me encantan las dudas! Escríbe tus dudas aquí abajo que en poco tiempo te responderán, yo me encargo de mandarlas:`
-  );
-
-})
-
-
-bot.command(['/consulta', '/Consulta', '/CONSULTA'], (ctx) => {
-
-  ctx.reply(
-
-    ` Increíble! Gracias por interesarte, qué te gustaría consultarnos? Si se trata de un encargo pulsa /encargo, si es una duda escríbela y te responderemos lo antes posible :
-    `
-  );
-
-})
-//
-bot.command(['/encargo'], (ctx) => {
-
-  ctx.reply(
-
-    ` Qué emoción! Y de qué es tu encargo? Escríbenos un mensaje con estos campos y te resonderemos lo antes posible:
-
-      -Nombre
-      -Descripción del encargo
-      -Dirección y correo
-      -Telefono y/o usuario Telegram
-      -Es una consultoría creativa para un /diseño, /servicio o /producto, o un consultoría estratégica para /formación, /conferencias, /investigación o /similar?
-      -Coste medio de tu aportación (por horas u otro tipo de medida. Si quieres ver el tipo de aportación más común en función de la consultoría haz click aquí)
-
-    `
-  );
-
-
-})
 //
 //
-bot.command(['/sent'], (ctx) => {
 
-  console.log(ctx.message);
-  bot.telegram.sendMessage('-681528618', ctx.message.text);
-
-})
-
-// bot.on('text', (ctx) => {
-//   bot.telegram.sendMessage(ctx.message.chat.id, 'akdjd');
-// })
 const extraObject = {
     parse_mode: 'HTML',
     ...Markup.inlineKeyboard([
@@ -159,6 +70,28 @@ const languageObject = {
         Markup.button.callback('English', 'English'),
     ]),
 }
+
+
+//WELCOME WITH COMMAND
+bot.command('/start', (ctx) => {
+
+  ctx.telegram.sendMessage(ctx.chat.id, '<b>Hello</b>. <i>What do you understand better?😍</i>', languageObject)
+
+
+})
+
+bot.command('/start', (ctx) => {
+
+  ctx.telegram.sendMessage(ctx.chat.id, '<b>Hello</b>. <i>What do you understand better?😍</i>', languageObject)
+
+})
+
+
+bot.command(['/settings'], (ctx) => {
+
+  ctx.telegram.sendMessage(ctx.chat.id, '<b>Hello</b>. <i>What do you understand better?😍</i>', languageObject)
+
+})
 
 bot.hears('hello', (ctx) => {
 
@@ -227,41 +160,35 @@ if (isProf)
   isProf = false;
 }
 
-bot.command(['/profesional'], (ctx) => {
+composer.on('message',ctx => {
+  bot.telegram.sendMessage('-681528618', ctx.message.text).then()
+})
 
-  ctx.reply(
+bot.use(composer.middleware());
 
-    ` Bienvenido/a al barco! Sólo haznos escribe un mensaje rellenando estos datos y te responderemos en cuanto podamos, gracias ! :
+//send message to other chat
+bot.command(['/sent'], (ctx) => {
 
-      -Nombre:
-      -Breve descripción profesional de ti / CV :
-      -Dirección y correo :
-      -Telefono y/o usuario Telegram :
-      -Campos de acción y/o conocimiento (Elige uno o varios : TECNOLOGÍA, DISEÑO, ACCIÓN POLÍTICA/SOCIAL, ARTE, CIENCIAS NATURALES Y EXACTAS, FIILOSOFIA, RELIGION, DERECHO, CIENCIAS SOCIALES ) :
-      -Coste medio de tu aportación (por horas u otro tipo de medida. Si quieres ver el tipo de aportación más común en función de la consultoría haz click aquí) :
-
-    `
-  );
-
-  isProf = true;
+  console.log(ctx.message);
+  bot.telegram.sendMessage('-681528618', ctx.message.text);
 
 })
 
 bot.hears(['imbécil', 'cabrón', 'Me cago en tus muertos', 'mamón', 'maricón', 'mamoncete', 'estúpido', 'tonto', 'karajote', 'Maricón', 'Imbécil', 'Imbecil', 'Hijo de puta', 'mongolo', 'MONGOLO', 'MAMON'], (ctx) => {
   ctx.reply('Cuidado con el lenguaje');
 })
+//
+// bot.mention('salrodgom', (ctx) => {
+//   ctx.reply('Menudo hijo de puta');
+// })
+//
+// bot.mention('amiguet', (ctx) => {
+//   ctx.reply('Ahora viene');
+// })
 
-bot.mention('salrodgom', (ctx) => {
-  ctx.reply('Menudo hijo de puta');
-})
-
-bot.mention('amiguet', (ctx) => {
-  ctx.reply('Ahora viene');
-})
-
-bot.mention('Wofree_bot', (ctx) => {
-  ctx.reply('No usarás el nombre de Dios en vano, so mierda');
-})
+// bot.mention('Wofree_bot', (ctx) => {
+//   ctx.reply('No usarás el nombre de Dios en vano, so mierda');
+// })
 
 // bot.phone('', (ctx) => {
 //   ctx.reply('No usarás el nombre de Dios en vano, so mierda');
@@ -275,10 +202,10 @@ bot.mention('Wofree_bot', (ctx) => {
 //   ctx.reply('Escribes');
 // })
 
-
-bot.on('gifs', (ctx) => {
-  ctx.reply('Los gifs los mandan los analfabetos y mongolos');
-})
+//
+// bot.on('gifs', (ctx) => {
+//   ctx.reply('Los gifs los mandan los analfabetos y mongolos');
+// })
 
 
 bot.launch();
