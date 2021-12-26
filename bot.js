@@ -75,14 +75,14 @@ bot.command(['/settings'], (ctx) => {
 
 bot.hears('hello', (ctx) => {
 
-    ctx.telegram.sendMessage(ctx.chat.id, '<b>Hello</b>. <i>What do you understand better?😍</i>', languageObject)
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObject)
 
 })
 
 bot.hears('hola', (ctx) => {
 
 
-    ctx.telegram.sendMessage(ctx.chat.id, '<b>Hola</b>. <i>Qué entiendes mejor?😍</i>', languageObject)
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hola, qué deseas: </i>', optionsObject)
 
 })
 
