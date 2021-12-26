@@ -73,18 +73,8 @@ bot.command(['/settings'], (ctx) => {
 
 })
 
-bot.hears('hello', (ctx) => {
-
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObject)
-
-})
-
-bot.hears('hola', (ctx) => {
 
 
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hola, qué deseas: </i>', optionsObject)
-
-})
 
 
 ///RESPUESTA A IDIOMA ESPAÑOL
@@ -107,6 +97,19 @@ const servicesObject = {
         Markup.button.callback('Libro, obra, etc', 'Solicitar_producto'),
     ]),
 }
+
+
+bot.command('/hola', (ctx) => {
+
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hola, qué deseas: </i>', optionsObject)
+
+})
+
+bot.hears('hola', (ctx) => {
+
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hola, qué deseas: </i>', optionsObject)
+
+})
 
 
 bot.action('Espanol', (ctx) => {
@@ -151,13 +154,20 @@ bot.action('Solicitar_producto', (ctx) => {
 
 ///RESPUESTA A IDIOMA
 ///OPTIONS object
-
 composer.on('message',ctx => {
   bot.telegram.sendMessage('-681528618', ctx.message.text).then()
   ctx.telegram.sendMessage(ctx.chat.id,'<i>Gracias por tu mensaje, di hola si necesitas algo más</i>', {parse_mode: 'HTML'});
 })
 
 bot.use(composer.middleware());
+
+
+////ANSWERS IN ENGLISH 
+bot.hears('hello', (ctx) => {
+
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObject)
+
+})
 
 
 bot.hears(['imbécil', 'cabrón', 'Me cago en tus muertos', 'mamón', 'maricón', 'mamoncete', 'estúpido', 'tonto', 'karajote', 'Maricón', 'Imbécil', 'Imbecil', 'Hijo de puta', 'mongolo', 'MONGOLO', 'MAMON'], (ctx) => {
