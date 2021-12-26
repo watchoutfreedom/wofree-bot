@@ -64,13 +64,6 @@ bot.command('/start', (ctx) => {
 
   ctx.telegram.sendMessage(ctx.chat.id, '<b>Hello</b>. <i>What do you understand better?😍</i>', languageObject)
 
-
-})
-
-bot.command('/start', (ctx) => {
-
-  ctx.telegram.sendMessage(ctx.chat.id, '<b>Hello</b>. <i>What do you understand better?😍</i>', languageObject)
-
 })
 
 
@@ -135,23 +128,23 @@ bot.action('Profesional', (ctx) => {
   bot.telegram.sendMessage('-681528618', 'Proffesional asked to join');
 })
 
-bot.action('Charla', (ctx) => {
+bot.action('Encargar_charla', (ctx) => {
   ctx.telegram.sendMessage(ctx.chat.id,'<i>Genial, de quién te guustaría solicitar la charla y nos pondremos en contacto contigo :</i>', {parse_mode: 'HTML'});
   bot.telegram.sendMessage('-681528618', 'Charla de:');
 })
 
-bot.action('Curso', (ctx) => {
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias :</i>', {parse_mode: 'HTML'});
+bot.action('Solicitar_curso', (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Genial, de quién te gustaría solicitar el curso y nos pondremos en contacto contigo :</i>', {parse_mode: 'HTML'});
   bot.telegram.sendMessage('-681528618', 'Curso de:');
 })
 
 bot.action('Solicitar_brainstorm', (ctx) => {
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias :</i>', {parse_mode: 'HTML'});
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Genial, escírbenos los datos de tu encargo y nos pondremos en contacto contigo:</i>', {parse_mode: 'HTML'});
   bot.telegram.sendMessage('-681528618', 'Brainstorm:');
 })
 
 bot.action('Solicitar_producto', (ctx) => {
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias 😚:</i>', {parse_mode: 'HTML'});
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Genial, escribe qué producto te interesa y nos pondremos en contacto contigo 😚:</i>', {parse_mode: 'HTML'});
   bot.telegram.sendMessage('-681528618', 'Producto:');
 })
 
