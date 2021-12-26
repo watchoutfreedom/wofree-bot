@@ -156,13 +156,13 @@ bot.action('Solicitar_producto', (ctx) => {
 ///OPTIONS object
 composer.on('message',ctx => {
   bot.telegram.sendMessage('-681528618', ctx.message.text).then()
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Gracias por tu mensaje, di hola si necesitas algo más</i>', {parse_mode: 'HTML'});
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Gracias por tu mensaje, añade lo que quieras o di /hola si necesitas algo más</i>', {parse_mode: 'HTML'});
 })
 
 bot.use(composer.middleware());
 
 
-////ANSWERS IN ENGLISH 
+////ANSWERS IN ENGLISH
 bot.hears('hello', (ctx) => {
 
   ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObject)
