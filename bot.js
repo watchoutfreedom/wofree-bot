@@ -121,10 +121,10 @@ const optionsObject = {
 const servicesObject = {
     parse_mode: 'HTML',
     ...Markup.inlineKeyboard([
-        Markup.button.callback('Encargar una Charla', 'Encargar_charla'),
-        Markup.button.callback('Solicitar un curso', 'Solicitar_curso'),
-        Markup.button.callback('Solicitar una consultoría creativa', 'Solicitar_brainstorm'),
-        Markup.button.callback('Solicitar un libro, obra u otro producto', 'Solicitar_producto'),
+        Markup.button.callback('Charla', 'Encargar_charla'),
+        Markup.button.callback('Curso', 'Solicitar_curso'),
+        Markup.button.callback('Consultoría creativa', 'Solicitar_brainstorm'),
+        Markup.button.callback('Libro, obra, etc', 'Solicitar_producto'),
     ]),
 }
 
@@ -153,7 +153,6 @@ bot.action('Profesional', (ctx) => {
 ///RESPUESTA A IDIOMA
 ///OPTIONS object
 
-
 composer.on('message',ctx => {
   if (isProf)
   {
@@ -164,7 +163,7 @@ composer.on('message',ctx => {
 
     isProf = false;
   }
-  
+
   bot.telegram.sendMessage('-681528618', ctx.message.text).then()
 })
 
