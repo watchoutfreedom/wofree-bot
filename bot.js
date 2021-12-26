@@ -135,32 +135,36 @@ bot.action('Espanol', (ctx) => {
 
 bot.action('Servicios', (ctx) => {
   ctx.telegram.sendMessage(ctx.chat.id,'<i>OK! Gracias, selecciona qué servicio te interesa :</i>', servicesObject)
+  bot.telegram.sendMessage('-681528618', 'Solicittud de servicios:');
 })
 
 bot.action('Consulta', (ctx) => {
   ctx.telegram.sendMessage(ctx.chat.id,'<i> Gracias por interesarte, qué te gustaría consultarnos? escríbela aquí y te responderemos lo antes posible</i>', {parse_mode: 'HTML'})
+  bot.telegram.sendMessage('-681528618', 'Inicio de Consulta:');
 })
 
 bot.action('Profesional', (ctx) => {
-  isProf = true;
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias :</i>', {parse_mode: 'HTML'})
+  isProf=true;
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Perfecto, escribe en un mensaje por qué quieres unirte, tu nombre y medio de contacto y nos pondremos en contacto contigo, gracias :</i>', {parse_mode: 'HTML'});
+  bot.telegram.sendMessage('-681528618', 'Proffesional asked to join');
 })
-
 
 
 ///RESPUESTA A IDIOMA
 ///OPTIONS object
-if (isProf)
-{
 
-  bot.on('text', (ctx) => {
-    bot.telegram.sendMessage('-681528618', ctx.message.text);
-  })
-
-  isProf = false;
-}
 
 composer.on('message',ctx => {
+  if (isProf)
+  {
+
+    bot.on('text', (ctx) => {
+      bot.telegram.sendMessage('-681528618', ctx.message.text);
+    })
+
+    isProf = false;
+  }
+  
   bot.telegram.sendMessage('-681528618', ctx.message.text).then()
 })
 
