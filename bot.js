@@ -163,16 +163,37 @@ bot.use(composer.middleware());
 
 
 ////ANSWERS IN ENGLISH
-bot.hears('hello', (ctx) => {
+const optionsObjectEng = {
+    parse_mode: 'HTML',
+    ...Markup.inlineKeyboard([
+        Markup.button.callback( 'Join community', 'proffesional'),
+        Markup.button.callback( 'Order Services', 'services'),
+        Markup.button.callback( 'Just a Question', 'question'),
+    ]),
+}
 
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObject)
+bot.action('English', (ctx) => {
+
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObjectEng)
 
 })
 
+bot.hears('hello', (ctx) => {
+
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObjectEng)
+
+})
+
+bot.action('proffesional'||'services'||'question', (ctx) => {
+
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObjectEng)
+
+})
 
 bot.hears(['imbécil', 'cabrón', 'Me cago en tus muertos', 'mamón', 'maricón', 'mamoncete', 'estúpido', 'tonto', 'karajote', 'Maricón', 'Imbécil', 'Imbecil', 'Hijo de puta', 'mongolo', 'MONGOLO', 'MAMON'], (ctx) => {
   ctx.reply('Cuidado con el lenguaje');
 })
+
 //
 // bot.mention('salrodgom', (ctx) => {
 //   ctx.reply('Menudo hijo de puta');
