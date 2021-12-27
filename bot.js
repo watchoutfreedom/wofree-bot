@@ -128,7 +128,7 @@ bot.action('Profesional', (ctx) => {
 })
 
 bot.action('Encargar_charla', (ctx) => {
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Genial, de quién te guustaría solicitar la charla y nos pondremos en contacto contigo :</i>', {parse_mode: 'HTML'});
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Genial, de quién te gustaría solicitar la charla y nos pondremos en contacto contigo :</i>', {parse_mode: 'HTML'});
   bot.telegram.sendMessage('-681528618', 'Charla de:');
 })
 
