@@ -38,10 +38,6 @@ bot.start((ctx) => {
 })
 
 
-//SAY HELLO
-//
-//
-
 const extraObject = {
     parse_mode: 'HTML',
     ...Markup.inlineKeyboard([
@@ -152,16 +148,6 @@ bot.action('Solicitar_producto', (ctx) => {
 })
 
 
-///RESPUESTA A IDIOMA
-///OPTIONS object
-composer.on('message',ctx => {
-  bot.telegram.sendMessage('-681528618', ctx.message.text).then()
-  ctx.telegram.sendMessage(ctx.chat.id,'<i>Gracias por tu mensaje, añade lo que quieras o di /hola si necesitas algo más</i>', {parse_mode: 'HTML'});
-})
-
-bot.use(composer.middleware());
-
-
 ////ANSWERS IN ENGLISH
 const optionsObjectEng = {
     parse_mode: 'HTML',
@@ -184,6 +170,12 @@ bot.hears('hello', (ctx) => {
 
 })
 
+bot.command('/hello', (ctx) => {
+
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObjectEng)
+
+})
+
 bot.action('proffesional'||'services'||'question', (ctx) => {
 
   ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObjectEng)
@@ -193,6 +185,17 @@ bot.action('proffesional'||'services'||'question', (ctx) => {
 bot.hears(['imbécil', 'cabrón', 'Me cago en tus muertos', 'mamón', 'maricón', 'mamoncete', 'estúpido', 'tonto', 'karajote', 'Maricón', 'Imbécil', 'Imbecil', 'Hijo de puta', 'mongolo', 'MONGOLO', 'MAMON'], (ctx) => {
   ctx.reply('Cuidado con el lenguaje');
 })
+
+
+
+///RESPUESTA A IDIOMA
+///OPTIONS object
+composer.on('message',ctx => {
+  bot.telegram.sendMessage('-681528618', ctx.message.text).then()
+  ctx.telegram.sendMessage(ctx.chat.id,'<i>Gracias por tu mensaje, añade lo que quieras o di /hola si necesitas algo más</i>', {parse_mode: 'HTML'});
+})
+
+bot.use(composer.middleware());
 
 //
 // bot.mention('salrodgom', (ctx) => {
