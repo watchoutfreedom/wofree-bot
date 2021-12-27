@@ -176,7 +176,7 @@ bot.command('/hello', (ctx) => {
 
 })
 
-bot.action('proffesional'||'services'||'question', (ctx) => {
+bot.action('proffesional', (ctx) => {
 
   ctx.telegram.sendMessage(ctx.chat.id,'<i>Hello, what do you want: </i>', optionsObjectEng)
 
